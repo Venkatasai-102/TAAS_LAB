@@ -1,0 +1,38 @@
+{% extends 'base1.html' %}
+
+{% block login %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="font-size: 50px; color:rgb(69, 214, 224)">Delete Car</h1>
+        </div>
+    </div>
+</br></br>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Car Id</th>
+                        <th>Car Model</th>
+                        <th>AC</th>
+                        <th>Deletion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for k in car %}
+                    <tr>
+                        <th>{{ k.id }}</th>
+                        <td>{{ k.mname }}</td>
+                        <td>{{ k.ac }}</td>
+                        <td>
+                            <a href="/delete/{{k.id}}" class="btn btn-outline-danger btn = sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
