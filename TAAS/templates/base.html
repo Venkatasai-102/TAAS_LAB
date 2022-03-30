@@ -5,11 +5,14 @@
   <meta charset="UTF-8" />
   <title>TAAS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/c1.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/c2.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/c3.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/About.css') }}" />
   <style>
     input[type=text],
     input[type=password] {
@@ -26,8 +29,9 @@
       background-color: #04AA6D;
       color: white;
       padding: 14px 20px;
-      margin: 0 8px;
+      margin: 0px;
       border: none;
+      border-radius: 10px;
       cursor: pointer;
       width: 100%;
     }
@@ -53,14 +57,23 @@
     img.avatar {
       width: 10%;
       border-radius: 50%;
+      border-width: 2px;
+      border-style: solid;
+      border-color: green;
     }
 
     .container {
-      padding: 16px;
+      padding: 30px 0;
+    }
+
+    .submit {
+      border-radius: 20px;
+      margin-top: 10px;
     }
 
     .inputs {
       border-radius: 20px;
+      background-color: rgb(250, 245, 225);
     }
 
     span.psw {
@@ -93,9 +106,10 @@
 
     /* Modal Content/Box */
     .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto 15% auto;
+      background-color: cornsilk;
+      margin: 5% auto 5% auto;
       /* 5% from the top, 15% from the bottom and centered */
+      padding: 10px;
       border: 1px solid #888;
       width: 80%;
       /* Could be more or less, depending on screen size */
@@ -154,6 +168,219 @@
         width: 100%;
       }
     }
+
+    @import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700);
+
+    body {
+      font-family: Rubik, sans-serif;
+      position: relative;
+      font-weight: 400;
+      font-size: 15px
+    }
+
+    ul {
+      padding: 0;
+      margin: 0
+    }
+
+    li {
+      list-style: none
+    }
+
+    a:focus,
+    a:hover {
+      text-decoration: none;
+      -webkit-transition: .3s ease;
+      -o-transition: .3s ease;
+      transition: .3s ease
+    }
+
+    a:focus {
+      outline: 0
+    }
+
+    img {
+      max-width: 100%
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 30px;
+      color: #898b96;
+      font-weight: 300
+    }
+
+    h4 {
+      font-family: Rubik, sans-serif;
+      margin: 0;
+      font-weight: 400;
+      padding: 0;
+      color: #363940
+    }
+
+    a {
+      color: #5867dd
+    }
+
+    .no-padding {
+      padding: 0 !important
+    }
+
+    .go_top {
+      line-height: 40px;
+      cursor: pointer;
+      width: 40px;
+      background: #5867dd;
+      color: #fff;
+      position: fixed;
+      -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, .1);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, .1);
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      right: -webkit-calc((100% - 1140px)/ 2);
+      right: calc((100% - 1140px)/ 2);
+      z-index: 111;
+      bottom: 80px;
+      text-align: center
+    }
+
+    .go_top span {
+      display: inline-block
+    }
+
+    .footer-big {
+      padding: 0;
+    }
+
+    .footer-big .footer-widget {
+      margin-bottom: 40px
+    }
+
+    .footer--light {
+      background: #e7e8ed
+    }
+
+    .footer-big .footer-menu ul li a,
+    .footer-big p,
+    .footer-big ul li {
+      color: #898b96
+    }
+
+    .footer-menu {
+      padding-left: 48px
+    }
+
+    .footer-menu ul li a {
+      font-size: 15px;
+      line-height: 32px;
+      -webkit-transition: .3s;
+      -o-transition: .3s;
+      transition: .3s
+    }
+
+    .footer-menu ul li a:hover {
+      color: #5867dd
+    }
+
+    .footer-menu--1 {
+      width: 100%
+    }
+
+    .footer-widget-title {
+      line-height: 42px;
+      margin-bottom: 10px;
+      font-size: 18px
+    }
+
+    .mini-footer {
+      background: #192027;
+      text-align: center;
+      padding: 32px 0
+    }
+
+    .mini-footer p {
+      margin: 0;
+      line-height: 26px;
+      font-size: 15px;
+      color: #999
+    }
+
+    .mini-footer p a {
+      color: #5867dd
+    }
+
+    .mini-footer p a:hover {
+      color: #34bfa3
+    }
+
+    .widget-about img {
+      display: block;
+      margin-bottom: 30px
+    }
+
+    .widget-about p {
+      font-weight: 400
+    }
+
+    .widget-about .contact-details {
+      margin: 30px 0 0 0
+    }
+
+    .widget-about .contact-details li {
+      margin-bottom: 10px
+    }
+
+    .widget-about .contact-details li:last-child {
+      margin-bottom: 0
+    }
+
+    .widget-about .contact-details li span {
+      padding-right: 12px
+    }
+
+    .widget-about .contact-details li a {
+      color: #5867dd
+    }
+
+    @media (max-width:991px) {
+      .footer-menu {
+        padding-left: 0
+      }
+    }
+
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 100px;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+    }
+
+    .fa:hover {
+      opacity: 0.7;
+    }
+
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+    }
+
+    .fa-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+
+    .fa-youtube {
+      background: #bb0000;
+      color: white;
+    }
+
+    .fa-instagram {
+      background: #e03c1f;
+      color: white;
+    }
   </style>
 </head>
 
@@ -166,8 +393,7 @@
   <header class="site-header">
     <div class="wrapper site-header__wrapper">
       <a href="/">
-        <img href="/" src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="logo" width="80"
-          height="40">
+        <img href="/" src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="logo" width="80" height="40">
       </a>
       <div class="site-header__middle">
         <nav class="nav">
@@ -238,6 +464,109 @@
 <!-- Header End -->
 {% block login %}
 {% endblock %}
+<footer class="footer-area footer--light">
+  <div class="footer-big">
+    <!-- start .container -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-12">
+          <div class="footer-widget">
+            <div class="widget-about">
+              <img src="http://placehold.it/250x80" alt="" class="img-fluid">
+              <p>TAAS website is a modern day solution for managing the database of a big company efficiently.</p>
+              <p>Made by Team Desk Champions</p>
+              <ul class="contact-details">
+                <li>
+                  <span class="icon-earphones"></span> Call Us:
+                  <a href="tel:07989396385">+91 798-939-6385</a>
+                </li>
+                <li>
+                  <span class="icon-envelope-open"></span>
+                  <a href="mailto:atishayjain002@gmail.com" target="_blank">atishayjain002@gmail.com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Ends: .footer-widget -->
+        </div>
+        <!-- end /.col-md-4 -->
+        <div class="col-md-3 col-sm-4">
+          <div class="footer-widget">
+            <div class="footer-menu footer-menu--1">
+              <h4 class="footer-widget-title">Services</h4>
+              <ul>
+                <li>
+                  <a href="#" onclick="getElementById('id01').style.display='block'">Login</a>
+                </li>
+                <li>
+                  <a href="#" onclick="getElementById('id02').style.display='block'">Create an account</a>
+                </li>
+                <li>
+                  <a href="#" onclick="getElementById('id01').style.display='block'">Book a Car</a>
+                </li>
+              </ul>
+            </div>
+            <!-- end /.footer-menu -->
+          </div>
+          <!-- Ends: .footer-widget -->
+        </div>
+        <!-- end /.col-md-3 -->
+
+        <div class="col-md-3 col-sm-4">
+          <div class="footer-widget">
+            <div class="footer-menu">
+              <h4 class="footer-widget-title">Our Company</h4>
+              <ul>
+                <li>
+                  <a href="/about">About Us</a>
+                </li>
+                <li>
+                  <a href="/contact">Contact Us</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('static', filename='files/Desk_Champions_SRS.pdf') }}">SRS File</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('static', filename='files/Test_Suite_Desk_Champions.pdf') }}">Test Suite</a>
+                </li>
+              </ul>
+            </div>
+            <!-- end /.footer-menu -->
+          </div>
+          <!-- Ends: .footer-widget -->
+        </div>
+        <!-- end /.col-lg-3 -->
+
+        <div class="col-md-3 col-sm-4">
+          <div class="footer-widget">
+            <div class="footer-menu no-padding">
+              <h4 class="footer-widget-title">Help Support</h4>
+              <ul>
+                <li>
+                  <a href="mailto:atishayjain002@gmail.com" target="_blank">Give Feedback</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('static', filename='files/Desk_Champions_SRS.pdf') }}">FAQs</a>
+                </li>
+                <li>
+                  <a href="{{ url_for('static', filename='files/Test_Plan_Desk_Champions.pdf') }}">Test Plan</a>
+                </li>
+              </ul>
+            </div>
+            <!-- end /.footer-menu -->
+          </div>
+          <!-- Ends: .footer-widget -->
+        </div>
+        <!-- Ends: .col-lg-3 -->
+
+      </div>
+      <!-- end /.row -->
+    </div>
+    <!-- end /.container -->
+  </div>
+  <!-- end /.footer-big -->
+
+</footer>
 </body>
 
 </html>

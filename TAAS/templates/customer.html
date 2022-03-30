@@ -1,1 +1,104 @@
-<h1>Hello Customer</h1>
+{% extends 'base1.html' %}
+
+{% block body %}
+<div>
+    <div class="modal-content">
+        <div class="imgcontainer">
+            <img src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <div>
+                <span class="fw-bold fs-3 attr">Name : </span>
+                <span class="fs-3 val">{{customer.name}}</span>
+            </div>
+            <div>
+                <span class="fw-bold fs-3 attr">Username : </span>
+                <span class="fs-3 val">{{customer.uname}}</span>
+            </div>
+            <div>
+                <span class="fw-bold fs-3 attr">Previous joureys : </span>
+                <span class="fs-3 val">{{customer.pjrny}}</span>
+            </div>
+            <div>
+                <span class="fw-bold fs-3 attr">Join date : </span>
+                <span class="fs-3 val">{{customer.jdate}}</span>
+            </div>
+            <h3></h3>
+        </div>
+    </div>
+</div>
+</br>
+<style>
+    .btn-primary {
+        background-color: #0099cc;
+        border-color: #0099cc;
+        /* padding: 15px;
+        margin: 50px 10px;
+        font-size: 20px; */
+        text-align: center;
+        display: inline-block;
+        width: auto;
+    }
+
+
+    .column {
+        float: left;
+        width: 25%;
+        padding: 0 10px;
+        margin: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Remove extra left and right margins, due to padding in columns */
+    .row {
+        margin: 0 -5px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .card-body{
+        margin: auto;
+    }
+</style>
+<div class="row">
+    <div class="column">
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static', filename='images/book.png')}}" class="card-img-top" alt="book a car"
+                width=200px height=200px>
+            <div class="card-body">
+                <a href="/carlist" class="btn btn-primary">Book a Car</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static', filename='images/jrn.jpg')}}" class="card-img-top"
+                alt="Prev Journey" width=200px height=200px>
+            <div class="card-body">
+                <a href="/customerlist" class="btn btn-primary">Show previous journeys</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card" style="width: 18rem;">
+            <img src="{{url_for('static', filename='images/delete.jpg')}}" class="card-img-top" alt="Delete"
+                width=200px height=200px>
+            <div class="card-body">
+                <a href="/stats" class="btn btn-primary">Delete Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

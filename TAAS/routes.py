@@ -4,19 +4,14 @@ from TAAS import db
 from TAAS.models import Customers, Administrator, Car, Journey, Booking, CModel, Statistics
 from datetime import datetime
 
-@app.route('/', methods=["REG", "POST", "GET"])
+@app.route('/')
 def index():
     return render_template('logreg.html')
 
 
-@app.route('/About')
+@app.route('/about')
 def About():
-    return render_template('About.html')
-
-
-@app.route('/navbar')
-def navbar():
-    return render_template('navbar.html')
+    return render_template('about.html')
 
 
 @app.route('/Contact')
@@ -60,7 +55,6 @@ def customer_login():
                 return redirect("/")
 
     return redirect("/")
-
 
 @app.route('/customer_register', methods=["POST", "GET"])
 def customer_register():
@@ -129,3 +123,71 @@ def add_Car():
     else:
         return render_template('addCar.html')
         
+@app.route('/deleteaccount/<int:sno>')
+def deleteaccount(sno):
+    customer = Customers.query.filter_by(sno=sno).first()
+    db.session.delete(customer)
+    db.session.commit()
+    return redirect('/')
+
+@app.route('/repair_snd')
+def repair():
+    cars = Car.query.all()
+    cmdel = CModel.query.all()
+    return render_template('repair_snd.html', cars=cars, cmdel=cmdel)
+
+@app.route('/repair_get')
+def repair():
+    cars = Car.query.all()
+    cmdel = CModel.query.all()
+    return render_template('repair_get.html', cars=cars, cmdel=cmdel)
+
+# 0 -> Available, 1 -> Rented, 2 -> Repair
+@app.route('/sendrepair/<int:id>')
+def sendrepair(id):
+    car = Car.query.filter_by(id=id).first()
+    mdl = car.model
+    cmdl = CModel.query.filter_by(mname=mdl).first()
+    if car.ac == True:
+        cmdl.accar -= 1
+    else:
+        cmdl.naccar -= 1
+    
+    db.sessionadd(cmdl)
+    db.session.commit()
+
+    car.avl = 2
+    db.session.add(car)
+    db.session.commit()
+    return redirect('/repaircar')
+
+@app.route('/getrepair/<int:id>')
+def getrepair(id):
+    car = Car.query.filter_by(id=id).first()
+    mdl = car.model
+    cmdl = CModel.query.filter_by(mname=mdl).first()
+    if car.ac == True:
+        cmdl.accar += 1
+    else:
+        cmdl.naccar += 1
+    
+    db.sessionadd(cmdl)
+    db.session.commit()
+
+    car.avl = 0
+    db.session.add(car)
+    db.session.commit()
+    return redirect('/repair')
+
+@app.route('/change_rent/<int:mno>', methods=["POST", "GET"])
+def change_rent(mno):
+    if request.method == "POST":
+        cmdl = CModel.query.filter_by(mno=mno).first()
+        cmdl.rent_h = request.form['rent_h']
+        cmdl.rent_k = request.form['rent_k']
+        db.session.add(cmdl)
+        db.session.commit()
+        return redirect('/carlist')
+    else:
+        cmdl = CModel.query.filter_by(mno=mno).first()
+        return render_template('change_rent.html', cmdl=cmdl)

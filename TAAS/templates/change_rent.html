@@ -1,0 +1,52 @@
+{% extends 'base1.html' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="font-size: 50px; color:rgb(69, 214, 224)">Change Rent</h1>
+        </div>
+    </div>
+</br></br>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Model Name</th>
+            <th scope="col">Old Rent per hr</th>
+            <th scope="col">Old Rent per Km</th>
+            <th scope="col">New Rent per hr</th>
+            <th scope="col">New Rent per Km</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for mdl in cmdl %}
+            <tr>
+            <form action="/changerent{{mdl.mno}}">
+                <td>{{ mdl.mno }}</td>
+                <td>{{ mdl.mname }}</td>
+                <td>{{ mdl.rent_h }}</td>
+                <td>{{ mdl.rent_k }}</td>
+                <tr>
+                    <div class="col-auto">
+                        <label for="inputPassword2" class="visible"></label>
+                        <input type="number" class="form-control" id="inputPassword2" placeholder="Rent per Hr" name="rent_h">
+                    </div>
+                </tr>
+                <tr>
+                    <div class="col-auto">
+                        <label for="inputPassword2" class="visible"></label>
+                        <input type="number" class="form-control" id="inputPassword2" placeholder="Rent per Km" name="rent_k">
+                    </div>
+                </tr>
+                <tr>
+                    <div class="col-auto">
+                      <button type="submit" class="btn btn-primary mb-3">Update Rent</button>
+                    </div>
+                </tr>
+            </form>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

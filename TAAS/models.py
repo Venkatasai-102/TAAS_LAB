@@ -4,6 +4,7 @@ from datetime import datetime
 class Statistics(db.Model):
     __bind_key__ = 'statistics'
     id = db.Column(db.Integer, primary_key=True)
+    mno = db.Column(db.Integer)
     demand = db.Column(db.Integer)
     rvnu = db.Column(db.Integer)
     prft = db.Column(db.Integer)
@@ -17,7 +18,7 @@ class CModel(db.Model):
     mname = db.Column(db.String(20), nullable=False)
     accar = db.Column(db.Integer)
     naccar = db.Column(db.Integer)
-    # sts = db.Column(db.Statistics)
+    prft = db.Column(db.Integer)
     rent_h = db.Column(db.Integer)
     rent_k = db.Column(db.Integer)
 
@@ -25,12 +26,11 @@ class CModel(db.Model):
 class Car(db.Model):
     __bind_key__ = 'car'
     id = db.Column(db.Integer, primary_key=True)
-    # carno = db.Column(db.String(30), nullable=False)
     model = db.Column(db.String(20), nullable=False)
     pdate = db.Column(db.DateTime, default=datetime.utcnow)
     kms = db.Column(db.Integer)
     ac = db.Column(db.Boolean)
-    avl = db.Column(db.Boolean)
+    avl = db.Column(db.Integer)
     fuel = db.Column(db.Integer)
 
     def repr(self) -> str:
@@ -42,6 +42,7 @@ class Administrator(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     uname = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200), nullable=False)
+    rvnu = db.Column(db.Integer)
 
 
 class Customers(db.Model):
@@ -50,6 +51,7 @@ class Customers(db.Model):
     uname = db.Column(db.String(200), nullable=False)
     password = db.Column(db.String(200), nullable=False)
     jdate = db.Column(db.DateTime, default=datetime.utcnow)
+    bcar = db.Column(db.Integer, default=0)
     pjrny = db.Column(db.Integer)
 
     def repr(self) -> str:
@@ -58,7 +60,6 @@ class Customers(db.Model):
 
 class Booking(db.Model):
     __bind_key__ = 'booking'
-    __abstract__ = True
     id = db.Column(db.Integer, primary_key=True)
     cust = db.Column(db.Integer)
     car = db.Column(db.Integer)
@@ -66,7 +67,7 @@ class Booking(db.Model):
     ereturn = db.Column(db.Integer)
 
 
-class Journey(Booking):
+class Journey(db.Model):
     __bind_key__ = 'journey'
     id = db.Column(db.Integer, primary_key=True)
     rdate = db.Column(db.DateTime, default=datetime.utcnow)
